@@ -72,27 +72,24 @@ class Solution18 {
                     }
                     //x & y differ, aka diagonal
                     else {
-                        if (Math.abs(rope[i - 1][0] - rope[i][0]) > 0 &&
-                            Math.abs(rope[i - 1][1] - rope[i][1]) > 0) {
-                            while (Math.abs(rope[i - 1][0] - rope[i][0]) > 1 &&
-                                   Math.abs(rope[i - 1][1] - rope[i][1]) > 1) {
-                                if (rope[i - 1][0] > rope[i][0] && rope[i - 1][1] > rope[i][1]) {
-                                    rope[i][0]++;
-                                    rope[i][1]++;
-                                } else if (rope[i - 1][0] < rope[i][0] && rope[i - 1][1] < rope[i][1]) {
-                                    rope[i][0]--;
-                                    rope[i][1]--;
-                                } else if (rope[i - 1][0] > rope[i][0] && rope[i - 1][1] < rope[i][1]) {
-                                    rope[i][0]++;
-                                    rope[i][1]--;
-                                } else {
-                                    rope[i][0]--;
-                                    rope[i][1]++;
-                                }
+                        while (Math.abs(rope[i - 1][0] - rope[i][0]) > 1 &&
+                               Math.abs(rope[i - 1][1] - rope[i][1]) > 1) {
+                            if (rope[i - 1][0] > rope[i][0] && rope[i - 1][1] > rope[i][1]) {
+                                rope[i][0]++;
+                                rope[i][1]++;
+                            } else if (rope[i - 1][0] < rope[i][0] && rope[i - 1][1] < rope[i][1]) {
+                                rope[i][0]--;
+                                rope[i][1]--;
+                            } else if (rope[i - 1][0] > rope[i][0] && rope[i - 1][1] < rope[i][1]) {
+                                rope[i][0]++;
+                                rope[i][1]--;
+                            } else {
+                                rope[i][0]--;
+                                rope[i][1]++;
                             }
-                            if (isAdjacent(rope[i - 1], rope[i])) continue;
                         }
-                        if (Math.abs(rope[i - 1][0] - rope[i][0]) > Math.abs(rope[i - 1][1] - rope[i][1])) {
+                        if (isAdjacent(rope[i - 1], rope[i])) continue;
+                        else if (Math.abs(rope[i - 1][0] - rope[i][0]) > Math.abs(rope[i - 1][1] - rope[i][1])) {
                             rope[i][1] = rope[i - 1][1];
                             while (!isAdjacent(rope[i - 1], rope[i])) {
                                 if (rope[i - 1][0] < rope[i][0]) rope[i][0]--;
